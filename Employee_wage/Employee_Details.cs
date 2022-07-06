@@ -10,7 +10,8 @@ namespace Employee_wage
     {
         int Full_Time = 1;
         int Part_Time = 2;
-        int wage_per_hour = 20, workingDays = 20;
+        int working_hrs = 0, working_days = 0;
+        int wage_per_hour = 20, total_workingDays = 20, total_Working_hours = 100;
         int emp_hour, wage, total_wage;
         public int CheckAttendance()
         {
@@ -33,8 +34,10 @@ namespace Employee_wage
 
             public void Cal_Wage(int emp_Check)
             {
-            for (int i = 0; i < workingDays; i++)
+            while (working_hrs <= total_Working_hours && working_days <= total_workingDays)
             {
+                working_days++;
+
                 switch (emp_Check)
                 {
                     case 1:
@@ -47,10 +50,12 @@ namespace Employee_wage
                         emp_hour = 0;
                         break;
                 }
-                wage = emp_hour * wage_per_hour;
-                total_wage = total_wage + wage;
+                working_hrs = working_hrs + emp_hour;
             }
-            Console.WriteLine("Employee's Daily wage : " + total_wage);
+            total_wage = working_hrs * wage_per_hour;
+            Console.WriteLine("Employee's total working hours : " + working_hrs);
+            Console.WriteLine("Employee's total working days : " + working_days);
+            Console.WriteLine("Employee's total wage for month : " + total_wage);
             }
     }
 }
