@@ -11,28 +11,42 @@ namespace Employee_wage
         int Full_Time = 1;
         int Part_Time = 2;
         int wage_per_hour = 20;
-        public void CheckAttendance()
+        int emp_hour, wage;
+        public int CheckAttendance()
         {
             Random rand = new Random();
-            int Attendance = rand.Next(0,3);
+            int Attendance = rand.Next(0, 3);
             if (Attendance == Full_Time)
             {
                 Console.WriteLine("Employee is Present");
-                int emp_hour = 8;
-                double wage = emp_hour * wage_per_hour;
-                Console.WriteLine("Daily wage of the Employee : " + wage);
             }
-            else if(Attendance == Part_Time)
-                {
+            else if (Attendance == Part_Time)
+            {
                 Console.WriteLine("Employee is Present for part time");
-                int emp_hour = 4;
-                double wage = emp_hour * wage_per_hour;
-                Console.WriteLine("Daily wage of the Part Time Employee :" + wage);
             }
             else
             {
                 Console.WriteLine("Employe is Absent");
             }
+            return Attendance;
         }
+
+            public void Cal_Wage(int emp_Check)
+            {
+                switch(emp_Check)
+                {
+                    case 1:
+                        emp_hour = 8;
+                        break;
+                        case 2:
+                        emp_hour = 4;
+                        break;
+                    default:
+                        emp_hour = 0;
+                        break;
+                }
+            wage = emp_hour * wage_per_hour;
+            Console.WriteLine("Employee's Daily wage : " + wage);
+            }
     }
 }
