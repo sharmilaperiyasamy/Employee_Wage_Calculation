@@ -10,8 +10,8 @@ namespace Employee_wage
     {
         int Full_Time = 1;
         int Part_Time = 2;
-        int wage_per_hour = 20;
-        int emp_hour, wage;
+        int wage_per_hour = 20, workingDays = 20;
+        int emp_hour, wage, total_wage;
         public int CheckAttendance()
         {
             Random rand = new Random();
@@ -33,20 +33,24 @@ namespace Employee_wage
 
             public void Cal_Wage(int emp_Check)
             {
-                switch(emp_Check)
+            for (int i = 0; i < workingDays; i++)
+            {
+                switch (emp_Check)
                 {
                     case 1:
                         emp_hour = 8;
                         break;
-                        case 2:
+                    case 2:
                         emp_hour = 4;
                         break;
                     default:
                         emp_hour = 0;
                         break;
                 }
-            wage = emp_hour * wage_per_hour;
-            Console.WriteLine("Employee's Daily wage : " + wage);
+                wage = emp_hour * wage_per_hour;
+                total_wage = total_wage + wage;
+            }
+            Console.WriteLine("Employee's Daily wage : " + total_wage);
             }
     }
 }
