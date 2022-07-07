@@ -10,16 +10,14 @@ namespace Employee_wage
     {
         int Full_Time = 1;
         int Part_Time = 2;
-        int working_hrs = 0, working_days = 0;
-        int wage_per_hour = 20, total_workingDays = 20, total_Working_hours = 100;
-        int emp_hour, wage, total_wage;
+        int emp_hour, total_wage;
         public int CheckAttendance()
         {
             Random rand = new Random();
             int Attendance = rand.Next(0, 3);
             if (Attendance == Full_Time)
             {
-                Console.WriteLine("Employee is Present");
+                Console.WriteLine("Employee is Present for full time");
             }
             else if (Attendance == Part_Time)
             {
@@ -32,8 +30,9 @@ namespace Employee_wage
             return Attendance;
         }
 
-            public void Cal_Wage(int emp_Check)
+            public void Cal_Wage(int emp_Check, int total_Working_hours, int total_workingDays, int wage_per_hour)
             {
+            int working_hrs = 0, working_days = 0;
             while (working_hrs <= total_Working_hours && working_days <= total_workingDays)
             {
                 working_days++;
