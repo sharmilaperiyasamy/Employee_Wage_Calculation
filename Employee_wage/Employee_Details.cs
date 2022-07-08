@@ -25,7 +25,7 @@ namespace Employee_wage
             }
             else
             {
-                Console.WriteLine("Employe is Absent");
+                Console.WriteLine("Employee is Absent");
             }
             return Attendance;
         }
@@ -55,6 +55,7 @@ namespace Employee_wage
             Console.WriteLine("Employee's total working hours : " + working_hrs);
             Console.WriteLine("Employee's total working days : " + working_days);
             Console.WriteLine("Employee's total wage for month : " + total_wage);
+            Console.WriteLine("---------------------------------------------------");
             }
     }
 }
