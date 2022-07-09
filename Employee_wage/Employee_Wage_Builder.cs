@@ -8,23 +8,48 @@ namespace Employee_wage
 {
     internal class Employee_Wage_Builder
     {
+        int numberOfCompany = 0;
+        Employee_Details[] emp = new Employee_Details[5];
+
+        public void addCompanyDetails(string Company, int total_Working_hours, int total_workingDays, int wage_per_hour)
+        {
+            emp[this.numberOfCompany] = new Employee_Details(Company, total_Working_hours, total_workingDays, wage_per_hour);
+            numberOfCompany++;
+        }
         public void getWageData()
         {
-            Console.WriteLine("Number of Companies you want to add:");
-            int numberOfCompany = Convert.ToInt32(Console.ReadLine());
-            while (numberOfCompany > 0)
+            for (int i = 0; i < numberOfCompany; i++)
             {
-                Employee_Details emp = new Employee_Details();
-                int emp_Check = emp.CheckAttendance();
-                Console.WriteLine("Enter the total Working Hours of Company:");
-                int total_Working_hours = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Enter total Working Days of Company:");
-                int total_workingDays = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Enter Wages Per Hour of Company:");
-                int wage_per_hour = Convert.ToInt32(Console.ReadLine());
-                emp.Cal_Wage(emp_Check, total_Working_hours, total_workingDays, wage_per_hour);
-                numberOfCompany--;
+                emp[i].getDetails(this.Cal_Wage(this.emp[i]));
+                Console.WriteLine(emp[i].showDetails());
             }
+
+        }
+
+        private int Cal_Wage(Employee_Details emp)
+        {
+            int working_hrs = 0, working_days = 0, emp_hour = 0, total_wage;
+            while (working_hrs <= emp.total_Working_hours && working_days <= emp.total_workingDays)
+            {
+                working_days++;
+                Random random = new Random();
+                int emp_Check = random.Next(0, 3);
+                switch (emp_Check)
+                {
+                    case 1:
+                        emp_hour = 8;
+                        break;
+                    case 2:
+                        emp_hour = 4;
+                        break;
+                    default:
+                        emp_hour = 0;
+                        break;
+                }
+                working_hrs = working_hrs + emp_hour;
+            }
+            total_wage = working_hrs * emp.wage_per_hour;
+            return total_wage;
         }
     }
 }

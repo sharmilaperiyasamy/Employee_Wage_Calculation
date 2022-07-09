@@ -9,6 +9,14 @@
 
   <ItemGroup>
     <PackageReference Include="NLog" Version="5.0.1" />
+    <PackageReference Include="NLog.Config" Version="4.7.15" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.1" />
   </ItemGroup>
 
+	<ItemGroup>
+		<None Update="Nlog.config">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	
 </Project>

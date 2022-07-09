@@ -8,54 +8,23 @@ namespace Employee_wage
 {
     internal class Employee_Details
     {
-        int Full_Time = 1;
-        int Part_Time = 2;
-        int emp_hour, total_wage;
-        public int CheckAttendance()
+        public string Company;
+        public int total_wage, total_Working_hours, total_workingDays, wage_per_hour;
+        public Employee_Details(string Company, int total_Working_hours, int total_workingDays, int wage_per_hour)
         {
-            Random rand = new Random();
-            int Attendance = rand.Next(0, 3);
-            if (Attendance == Full_Time)
-            {
-                Console.WriteLine("Employee is Present for full time");
-            }
-            else if (Attendance == Part_Time)
-            {
-                Console.WriteLine("Employee is Present for part time");
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
-            }
-            return Attendance;
+            this.Company = Company;
+            this.total_Working_hours = total_Working_hours;
+            this.total_workingDays = total_workingDays;
+            this.wage_per_hour = wage_per_hour;
         }
 
-            public void Cal_Wage(int emp_Check, int total_Working_hours, int total_workingDays, int wage_per_hour)
-            {
-            int working_hrs = 0, working_days = 0;
-            while (working_hrs <= total_Working_hours && working_days <= total_workingDays)
-            {
-                working_days++;
-
-                switch (emp_Check)
-                {
-                    case 1:
-                        emp_hour = 8;
-                        break;
-                    case 2:
-                        emp_hour = 4;
-                        break;
-                    default:
-                        emp_hour = 0;
-                        break;
-                }
-                working_hrs = working_hrs + emp_hour;
-            }
-            total_wage = working_hrs * wage_per_hour;
-            Console.WriteLine("Employee's total working hours : " + working_hrs);
-            Console.WriteLine("Employee's total working days : " + working_days);
-            Console.WriteLine("Employee's total wage for month : " + total_wage);
-            Console.WriteLine("---------------------------------------------------");
-            }
+        public void getDetails(int total_wage)
+        {
+            this.total_wage = total_wage;
+        }
+        public String showDetails()
+        {
+            return "Total Monthly Wages of " + Company + " is " + total_wage;
+        }
     }
 }
